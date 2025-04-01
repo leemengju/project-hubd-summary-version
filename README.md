@@ -204,7 +204,7 @@ php artisan serve --port=8000
 ## 聯繫方式
 
 如有任何問題或建議，請隨時聯繫：
-- 電子郵件: your-email@example.com
+- 電子郵件: ray9774517@gmail.com
 
 ---
 
