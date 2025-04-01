@@ -12,16 +12,16 @@
 
 ```
 客戶端(MVC架構) <─────────────┐
-                              │
+                            │
 商業後台前端 (React + Vite) <─┼─> 商業後台API (Laravel)
-                              │
-                              └─> MySQL 資料庫
+                            │
+                            └─> MySQL 資料庫
 ```
 
 ## 環境需求
 
 - PHP 8.1+
-- Node.js 16.0+
+- Node.js 16.0+ (必需，用於前端資源編譯及開發伺服器)
 - MySQL 8.0+
 - Composer 2.0+
 - npm 7.0+ 或 yarn 1.22+
@@ -34,10 +34,11 @@
 # 建立資料庫
 mysql -u root -p
 CREATE DATABASE your_database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+use your_database_name;
+source project_hubd_20250401_1005.sql;
 exit
 
-# 若有提供SQL檔案，請導入資料結構和初始數據
-mysql -u root -p your_database_name < project_hubd_20250401_1005.sql
+
 ```
 
 **或使用圖形化工具**:
@@ -70,11 +71,24 @@ DB_PASSWORD=your_db_password     # 您的資料庫密碼
 # 生成應用程式金鑰
 php artisan key:generate
 
+# 清除快取
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+
+
 
 # 在另一個終端視窗編譯前端資源
 npm run dev
 ```
 
+# 如果遇到權限問題
+```
+#以下為開放laravel權限問題
+sudo chmod -R 777 client-side-test/storage
+sudo chmod -R 777 client-side-test/bootstrap/cache
+
+```
 ### 3. 商業後台前端 (business-side-frontend-test)
 
 ```bash
@@ -82,15 +96,17 @@ npm run dev
 cd business-side-frontend-test
 
 # 安裝依賴
-npm install
-# 或使用 yarn
-yarn install
+npm install --legacy-peer-deps
 
+
+# 複製並設定環境變數
+cp .env.example .env
 
 
 # 啟動開發伺服器
 npm run dev
 
+```
 
 ### 4. 商業後台API服務 (business-side-backend-test)
 
@@ -138,7 +154,7 @@ php artisan serve --port=8000
 如果您在連線資料庫時遇到問題，請檢查以下幾點：
 
 1. **確認資料庫伺服器運行中**：
-   MySQL 服務必須正在運行，您可以通過終端檢查或使用系統服務控制面板。
+   檢查服務狀態 `sudo service mysql status` 或 `sudo systemctl status mysql`
 
 2. **驗證連線參數**：
    - 主機名稱 (DB_HOST) 正確，通常為 127.0.0.1 或 localhost
