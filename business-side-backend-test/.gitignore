@@ -9,6 +9,8 @@
 .env
 .env.backup
 .env.production
+# 確保 .env.example 不被忽略
+!.env.example
 .phpactor.json
 .phpunit.result.cache
 Homestead.json

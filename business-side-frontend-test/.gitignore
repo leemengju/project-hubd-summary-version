@@ -1,4 +1,3 @@
-
 # Laravel
 /vendor
 /node_modules
@@ -10,6 +9,8 @@
 .env.encrypted
 .env.backup
 .env.production
+# 確保 .env.example 不被忽略
+!.env.example
 
 # Laravel Mix / Vite
 /public/hot
