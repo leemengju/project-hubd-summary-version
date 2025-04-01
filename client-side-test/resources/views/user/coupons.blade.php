@@ -381,17 +381,17 @@
             }
             
             // 為可用優惠券添加點擊事件
-            const activeCoupons = document.querySelectorAll('#coupon-container .coupon-item');
-            activeCoupons.forEach(coupon => {
-                coupon.addEventListener('click', function() {
-                    // 獲取優惠券 ID
-                    const couponId = this.dataset.couponId;
-                    if (couponId) {
-                        // 跳轉到優惠券詳情頁面
-                        window.location.href = `/user/coupons/${couponId}`;
-                    }
-                });
-            });
+            // const activeCoupons = document.querySelectorAll('#coupon-container .coupon-item');
+            // activeCoupons.forEach(coupon => {
+            //     coupon.addEventListener('click', function() {
+            //         // 獲取優惠券 ID
+            //         const couponId = this.dataset.couponId;
+            //         if (couponId) {
+            //             // 跳轉到優惠券詳情頁面
+            //             window.location.href = `/user/coupons/${couponId}`;
+            //         }
+            //     });
+            // });
         });
     </script>
 @endpush
