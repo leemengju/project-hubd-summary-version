@@ -35,7 +35,7 @@
 mysql -u root -p
 CREATE DATABASE your_database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 use your_database_name;
-source project_hubd_20250401_1005.sql;
+source project_hubd_database.sql;
 exit
 
 
@@ -50,7 +50,7 @@ exit
 
 ```bash
 # 進入專案目錄
-cd client-side-test
+cd client-side
 
 # 安裝依賴
 composer install
@@ -85,15 +85,15 @@ npm run dev
 # 如果遇到權限問題
 ```
 #以下為開放laravel權限問題
-sudo chmod -R 777 client-side-test/storage
-sudo chmod -R 777 client-side-test/bootstrap/cache
+sudo chmod -R 777 client-side/storage
+sudo chmod -R 777 client-side/bootstrap/cache
 
 ```
-### 3. 商業後台前端 (business-side-frontend-test)
+### 3. 商業後台前端 (business-side-frontend)
 
 ```bash
 # 進入專案目錄
-cd business-side-frontend-test
+cd business-side-frontend
 
 # 安裝依賴
 npm install --legacy-peer-deps
@@ -108,11 +108,11 @@ npm run dev
 
 ```
 
-### 4. 商業後台API服務 (business-side-backend-test)
+### 4. 商業後台API服務 (business-side-backend)
 
 ```bash
 # 進入專案目錄
-cd business-side-backend-test
+cd business-side-backend
 
 # 安裝依賴
 composer install
@@ -204,7 +204,7 @@ php artisan serve --port=8000
 ## 聯繫方式
 
 如有任何問題或建議，請隨時聯繫：
-- 電子郵件: ray9774517@gmail.com
+- 電子郵件: 
 
 ---
 
