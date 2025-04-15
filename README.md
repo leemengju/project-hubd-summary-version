@@ -81,6 +81,8 @@ php artisan view:clear
 # 在另一個終端視窗編譯前端資源
 npm run dev
 ```
+# 開啟網頁方式
+localhost\project_name\public\page_name
 
 # 如果遇到權限問題
 ```
