@@ -95,6 +95,7 @@ const Order = () => {
   // <---------------------------篩選欄位__抓資料、輸入資料、搜尋資料----------------------->
   const handleInputChange = (field, value) => {
     console.log(`Changing ${field} to ${value}`);
+    // 這裡呼叫 setFilters，這通常是透過 useState 建立的 setter 函數，用來更新篩選條件。它接收一個 callback 函數，這個 callback 的參數是這裡叫 prevFilters。
     setFilters(prevFilters => {
       const newFilters = {
         ...prevFilters,
@@ -134,6 +135,7 @@ const Order = () => {
     setFilteredOrders([...filtered]);
     console.log(filteredOrders);
 
+
     setTotalPages(Math.ceil(filtered.length / itemsPerPage));
     setCurrentPage(1); // 重置到第一頁
   };
@@ -144,7 +146,7 @@ const Order = () => {
     currentPage * itemsPerPage
   );
 
-  // <-----------------------------------function，open&closepopup------------------------------------------>
+  // <-----------------------------------function_open&closepopup------------------------------------------>
   const openPopup = (order) => {
     if (!order) return;
     setSelectedOrder(order);

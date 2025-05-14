@@ -51,7 +51,7 @@
       </div>
       <section id="hiddenArticle" class=" flex items-end w-full max-md:max-w-full">
 
-<!--------------------------------------- 靜態畫面 --------------------------------->
+        <!--------------------------------------- 靜態畫面 --------------------------------->
         <!-- <article 
           class="flex overflow-hidden flex-wrap gap-10 justify-between items-center px-8 py-8 bg-white rounded shadow-sm  min-w-60 max-md:px-5 max-md:max-w-full">-->
         <!-- tablerowleft -->
@@ -227,7 +227,7 @@
           console.log("count", count);
           console.log("stock", stock);
 
-
+          // 超過庫存數量會報錯
           if (count < stock) {
             countElement.text(count + 1); // 增加數量
           } else {
@@ -236,6 +236,7 @@
           updatePrices(); // 更新所有價格
         });
 
+         // 數量少於1會確認是否要刪除
         $(".buttonMinus").click(function() {
           let countElement = $(this).closest(".productRow>article").find(".quantity");
           let count = parseInt(countElement.text()); // 獲取當前數量
@@ -560,11 +561,11 @@ ${cart_items[i].product_stock}
     $(".goToCheckOut").on('click', function() {
       saveDataToLocalStorage();
       let productList = JSON.parse(localStorage.getItem("productList"));
-        if (productList == 0) {
-          alert("商品數量不能為0");
-        } else {
-          window.location.href = "{{ route('check_out') }}";
-        }
+      if (productList == 0) {
+        alert("商品數量不能為0");
+      } else {
+        window.location.href = "{{ route('check_out') }}";
+      }
     });
 
 
@@ -575,7 +576,7 @@ ${cart_items[i].product_stock}
       $(".productRow>article").each(function() {
         let quantity = parseInt($(this).find(".quantity").text());
         let isChecked = $(this).find(".checkbox").prop("checked");
-        
+
         // 只有當數量大於0且checkbox被勾選時才添加到productList
         if (quantity > 0 && isChecked) {
           let productData = {
@@ -587,7 +588,7 @@ ${cart_items[i].product_stock}
             quantity: quantity,
             product_price: parseFloat($(this).find(".product_price").text().replace('$', ''))
           };
-          
+
           productList.push(productData);
         }
       });
